@@ -19,7 +19,7 @@ func main() {
 		fmt.Printf("Usage: FixPermissions [path to scan]\n")
 		return
 	}
-	_ = filepath.Walk(args[1], func(path string, info os.FileInfo, err error) error {
+	err := filepath.Walk(args[1], func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return checkError(err)
 		}
@@ -40,4 +40,7 @@ func main() {
 		}
 		return nil
 	})
+	if err != nil {
+		_ = fmt.Errorf("[Error] %s\n", err.Error())
+	}
 }
