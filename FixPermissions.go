@@ -36,7 +36,6 @@ func main() {
 			if err != nil {
 				return checkError(err)
 			}
-			return nil
 		}
 		return nil
 	})
